@@ -1,0 +1,27 @@
+// C++ code
+//
+int soilS=0;
+void setup() {
+  pinMode(A0, INPUT);
+  pinMode(13, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  soilS = analogRead(A0);
+  Serial.println(soilS);
+
+  if (soilS <= 600) {
+    digitalWrite(13, LOW);
+    Serial.println("Soil is moist! No action needed.");
+  }
+  else if (soilS >= 800) {
+    digitalWrite(13, HIGH);
+    Serial.println("Soil is dry! Watering required.");
+  }
+  else {
+    Serial.println("Soil moisture is in the middle range.");
+  }
+
+  delay(1000);
+}
